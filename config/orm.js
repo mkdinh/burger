@@ -12,10 +12,11 @@ var orm = function(){
             })
         };
 
-        this.insertOne = function(row,fn){
-            connection.query('INSERT INTO burgers (burger_name) VALUES ?',[row], function(err, data){
+        this.insertOne = function(name,fn){
+            var pic = picURL();
+            connection.query('INSERT INTO burgers (burger_name,avatar) VALUES(?,?)',[name,pic], function(err){
                 if(err) throw err;
-                fn(data)
+                fn()
             })
         };
 
@@ -27,5 +28,11 @@ var orm = function(){
         };
     };
 };
+
+function picURL(){
+    var randNum = Math.floor(Math.random() *10) + 1;
+    var url = '/img/avatar/avBurger'+randNum+'.png';
+    return url
+}
 
 module.exports = orm;

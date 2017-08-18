@@ -1,0 +1,64 @@
+<div class='row'>
+    <div class='col s12 offset-l2 l8' id='burger-select'>
+        <form class='col s12 center valign-wrapper' id='burger-menu' method='POST'>
+            
+            <div class="input-field col s12 offset-l2 l6">
+            <input id="burger_name" name="burger_name" type="text" placeholder='Add a new burger!'>
+            <label for="burger_name">Burger Name</label>
+            </div>
+            <input type='image' src='/img/chef.png' class='right' id='burger-submit' alt='submit-burger' />
+            
+        </form>
+    </div>
+</div>
+
+<div class="carousel flow-text" id='burger-display'>
+    {{#each burgers}}
+          <a class="carousel-item" data-id="{{id}}" data-name='{{burger_name}}' href="#{{id}}!">
+            <div class="popup">
+                <img class='burger-avatar' src="{{avatar}}"/>
+                <span class="popuptext truncate" id="{{id}}-popUp"> 
+                    {{burger_name}} 
+                </span>
+
+                <ul class='burger-option'>
+                    {{#if devoured}}
+                        <li>
+                            <form action='/?_method=PUT'>
+                                <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Make Again" src='/img/replay.png'/>
+                            </form>
+                        </li>
+                    {{else}}
+                        <li>
+                            <form action='/?_method=PUT'>
+                                <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Eat" src='/img/cutlery.png'/>
+                            </form>
+                        </li>
+                    {{/if}}
+                    
+                    <li>
+                        <form action='/?_method=PUT'>
+                            <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Edit" src='/img/edit.png'/>
+                        </form>
+                    </li>
+                    
+                    <li>
+                        <form action='/{{id}}'>
+                            <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="More Info" src='/img/search.png'/>
+                        </form>
+                    </li>
+
+                    <li>
+                        <form action='/{{id}}'>
+                            <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Delete" src='/img/rubbish.png'/>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+            </a>
+    {{/each}}
+</div>
+
+
+    

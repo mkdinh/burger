@@ -3,13 +3,14 @@ var express = require('express');
 var hdbs = require('express-handlebars');
 var path = require('path');
 var bodyParser = require('body-parser');
-var methodOR = require('method-override');
+var methodOverride = require('method-override');
 var burgers_controller = require('./controllers/burgers_controller.js');
+
 // ------------------ SETTING UP SERVER ---------------------------
 
 // create express app
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 app.listen(port, function(){console.log('Listen on port:', port)})
 
 // set view engine to handelbars
@@ -17,13 +18,18 @@ app.engine('handlebars', hdbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars');
 
 // serve static files to server (css, js, img)
-app.use( express.static(path.join(__dirname,'public')) )
+app.use( express.static(path.join(__dirname,'public')) );
+app.use( express.static(path.join(__dirname,'models')) )
 // parse body of incoming request
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
-
+// allow overriding methods in query (?_method=put)
+app.use(methodOverride('_method'));
 
 // set up controller for burgers
+app.use(burgers_controller)
+
+
 
 
 
