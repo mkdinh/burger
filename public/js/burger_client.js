@@ -43,7 +43,7 @@
                                 url: '/',
                                 success: function(){
                                         Materialize.toast('Successfully added!', 2000,'',function(){
-                                                window.location.replace("http://localhost:8080")
+                                                document.location.href="/";
                                         }) 
 
                                 }
