@@ -18,10 +18,11 @@
             </ul>
         </div>
         <div class="card-action center">
-          <a href="/">Index</a>
-          <a href="/api/{{id}}">API</a>
+          <a href="/api/{{id}}">Edit<i class='tiny material-icons'>edit</i></a>
+          <a href="/">Index <i class='tiny material-icons'>keyboard_return</i></a>
+          <a href="/api/{{id}}">API <i class='tiny material-icons'>list</i></a>
           <form action='/{{id}}?_method=DELETE' method='POST' class='burger-delete'>
-            <button type='submit' class='burger-delete-btn'>Delete</button>
+            <button type='submit' class='burger-delete-btn'>Delete <i class='tiny material-icons'>delete_forever</i></button>
             </form>
           </form>
         </div>

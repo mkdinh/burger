@@ -241,6 +241,11 @@ input[type=text]:focus:not(.browser-default):focus:not([readonly]) + label, #bur
     font-family: 'Shadows Into Light', serif ;
 }
 
+#burger-info i {
+    vertical-align: middle;
+    padding-bottom: .2rem;
+}
+
 .burger-delete{
     display:inline
 }
