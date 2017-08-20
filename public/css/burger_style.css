@@ -19,6 +19,12 @@ nav{background-color: #ffc107}
 
 /* container */
 
+.container{
+    animation: fade .8s ease-in-out 0s 1 alternate;
+    opacity:0;    
+    animation-fill-mode: forwards;
+}
+
 #burger-menu{
     font: bold 5rem 'Indie Flower',cursive;
     color:#F3F2F2;
@@ -176,7 +182,7 @@ input[type=text]:focus:not(.browser-default):focus:not([readonly]) + label, #bur
 
 .carousel-item.active .burger-option{
     position: absolute;
-    top:-49%;
+    top:-47%;
     left: 95%;
     opacity: 1;
     background-color: rgba(255,255,255,.4);
@@ -184,8 +190,10 @@ input[type=text]:focus:not(.browser-default):focus:not([readonly]) + label, #bur
 }
 
 .burger-option form{
-    margin: .5rem .2rem;
+    position:relative;
+    margin: .75rem .2rem;
     outline : none;
+    font-size:5px
 }
 
 .footer-ref{
@@ -196,3 +204,54 @@ input[type=text]:focus:not(.browser-default):focus:not([readonly]) + label, #bur
     padding: .5rem 2rem;
 }
 
+
+/* SHOW PAGE */
+
+#burger-info{
+    height:80%;
+}
+
+@keyframes fade{
+    0% {opacity:0}
+    100% {opacity: 1}
+}
+
+.burger-stat{
+    color:rgb(100,100,100);
+    font-family: 'Cutive';
+    font-size: 1.5rem;
+}
+
+.stat-label{
+    font-weight:bold;
+}
+
+#burger-pic{    
+    display:block;
+    margin:auto;
+    padding:10%;
+    width:80%;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 10px #222); 
+}
+
+#burger-name{
+    color: rgb(236,102,70);
+    border-bottom:.2rem solid rgb(236,102,70);
+    font-family: 'Shadows Into Light', serif ;
+}
+
+.burger-delete{
+    display:inline
+}
+
+.burger-delete-btn{
+    color: #ffab40;
+    margin-right: 24px;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+    text-transform: uppercase;
+    background-color: none;
+    background:none;
+    border:none;
+}

@@ -1,30 +1,42 @@
 var express = require('express');
 var burger  = require('../models/burger.js')
-var ormFile = require('../config/orm.js');
-var orm = ormFile();
 var router = express.Router();
 
 // ROUTING 
 
 router.get('/', function(req,res){
-    orm.selectAll(function(data){
+    burger.all(function(data){
         res.render('index', {burgers: data})
     })
 })
 
+router.get('/show/:id', function(req,res){
+    burger.find(req.params.id,function(data){
+        res.render('show', data[0])
+    })
+})
+
 router.post('/', function(req,res){
-    orm.insertOne(req.body.burger_name, function(){
+    burger.create(req.body.burger_name, function(data){
         res.redirect('/')
     })
 })
 
-router.put('/', function(req,res){
-    burgerPUT(res,req)
+router.put('/:id', function(req,res){
+    burger.update('devoured',req.body.choice,req.params.id,function(data){
+        console.log(data)
+        res.redirect('/')
+    })
 })
 
-router.delete('/', function(req,res){
-    burgerDELETE(req,res);
+router.delete('/:id', function(req,res){
+    burger.delete(req.params.id, function(data){
+        console.log('hey')
+        res.redirect('/')
+    })
 })
+
+
 
 module.exports = router;
 

@@ -1,38 +1,41 @@
 var connection = require('./connection.js');
 
-var orm = function(){
-    if(!(this instanceof orm)){
-        return new orm()
+var orm = {
+    all: function(table,fn){
+        connection.query("SELECT * FROM ?? ORDER BY date DESC",[table], function(err,data){
+            if(err) throw err;
+            fn(data)
+        })
+    },
+
+    find: function(table,id,fn){
+        connection.query("SELECT * FROM ?? WHERE id=?",[table,id], function(err,data){
+            if(err) throw err;
+            fn(data)
+        })
+    },
+
+    insertOne: function(table,name,pic,fn){
+        connection.query('INSERT INTO ?? (burger_name,avatar) VALUES(?,?)',[table,name,pic], function(err){
+            if(err) throw err;
+            fn()
+        })
+    },
+
+    updateOne: function(table,col,val,id,fn){
+        connection.query('UPDATE ?? SET ??=? WHERE id=?', [table,col,val,id], function(err,data){
+            if(err) throw err;
+            fn(data)
+        })
+    },
+
+    deleteOne: function(table,id,fn){
+        connection.query('DELETE FROM ?? WHERE id=?',[table,id],function(err,data){
+            if(err) throw err;
+            fn(data);
+        })
     }
-    else{
-        this.selectAll = function(fn){
-            connection.query("SELECT * FROM burgers", function(err,data){
-                if(err) throw err;
-                fn(data)
-            })
-        };
-
-        this.insertOne = function(name,fn){
-            var pic = picURL();
-            connection.query('INSERT INTO burgers (burger_name,avatar) VALUES(?,?)',[name,pic], function(err){
-                if(err) throw err;
-                fn()
-            })
-        };
-
-        this.updateOne = function(id,attr,fn){
-            connection.query('UPDATE burgers SET id=? WHERE ?'), [id,row], function(err,data){
-                if(err) throw err;
-                fn(data)
-            }
-        };
-    };
 };
 
-function picURL(){
-    var randNum = Math.floor(Math.random() *10) + 1;
-    var url = '/img/avatar/avBurger'+randNum+'.png';
-    return url
-}
 
 module.exports = orm;

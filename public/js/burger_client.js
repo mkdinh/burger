@@ -1,10 +1,18 @@
 
         $('.carousel').carousel();
         $('.carousel.carousel-slider').carousel({fullWidth: false});
-        $('.carousel-item').on('click',function(ev){
-                ev.preventDefault();
-                console.log("#"+$(this).attr('data-id')+'-popUp')
-        })
+        var autoplay = setInterval(function() {
+          $('.carousel').carousel('next');
+        }, 3000); 
+        
+        $('.carousel-item').hover(
+                function(ev){
+                        clearInterval(autoplay);
+                },
+                function(ev){
+                        autoplay = setInterval( function(){$('.carousel').carousel('next')}, 3000);
+                }
+        );
 
 
         $('#burger_name').on('input', function(ev){
@@ -42,3 +50,7 @@
                         })
                 }
         })
+
+// BURGER SHOW
+
+// $('#burger-info').fadeIn(600);

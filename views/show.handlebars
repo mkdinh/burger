@@ -1,0 +1,30 @@
+
+  <div class="col s12 m8 offset-m2 valign-wrapper" id='burger-info'>
+    <div class="card horizontal">
+      <div class="card-image valign-wrapper">
+        <img src='{{avatar}}' id='burger-pic'>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+            <h1 id='burger-name'> {{burger_name}} </h1>
+            <ul>
+                <li class='burger-stat'> <p><span class='stat-label'>ID: </span>{{id}} </p></li>
+                {{#if devoured}}
+                    <li class='burger-stat'> <p><span class='stat-label'>Status: </span>Eaten</p> </li>
+                {{else}}
+                    <li class='burger-stat'> <p><span class='stat-label'>Status: </span>Not Eaten</p> </li>
+                {{/if}}
+                    <li class='burger-stat'> <p><span class='stat-label'>Date Created: </span>{{date}}</p> </li>
+            </ul>
+        </div>
+        <div class="card-action center">
+          <a href="/">Index</a>
+          <a href="/api/{{id}}">API</a>
+          <form action='/{{id}}?_method=DELETE' method='POST' class='burger-delete'>
+            <button type='submit' class='burger-delete-btn'>Delete</button>
+            </form>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

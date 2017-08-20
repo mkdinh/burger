@@ -14,7 +14,7 @@
 
 <div class="carousel flow-text" id='burger-display'>
     {{#each burgers}}
-          <a class="carousel-item" data-id="{{id}}" data-name='{{burger_name}}' href="#{{id}}!">
+        <a class="carousel-item" data-id="{{id}}" data-name='{{burger_name}}' href="#{{id}}!">
             <div class="popup">
                 <img class='burger-avatar' src="{{avatar}}"/>
                 <span class="popuptext truncate" id="{{id}}-popUp"> 
@@ -24,39 +24,34 @@
                 <ul class='burger-option'>
                     {{#if devoured}}
                         <li>
-                            <form action='/?_method=PUT'>
+                            <form action='/{{id}}?_method=PUT' method='POST'>
+                                <input type=hidden value=0 name='choice' />
                                 <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Make Again" src='/img/replay.png'/>
                             </form>
                         </li>
                     {{else}}
                         <li>
-                            <form action='/?_method=PUT'>
+                            <form action='/{{id}}?_method=PUT' method='POST'>
+                                <input type=hidden value=1 name='choice' />
                                 <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Eat" src='/img/cutlery.png'/>
                             </form>
                         </li>
                     {{/if}}
-                    
+                                        
                     <li>
-                        <form action='/?_method=PUT'>
-                            <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Edit" src='/img/edit.png'/>
-                        </form>
-                    </li>
-                    
-                    <li>
-                        <form action='/{{id}}'>
+                        <form action='/show/{{id}}' method='GET'>
                             <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="More Info" src='/img/search.png'/>
                         </form>
                     </li>
 
                     <li>
-                        <form action='/{{id}}'>
+                        <form action='/{{id}}?_method=DELETE' method='POST'>
                             <input type='image' class='tooltipped' data-position="right" data-delay="50" data-tooltip="Delete" src='/img/rubbish.png'/>
                         </form>
                     </li>
                 </ul>
-
             </div>
-            </a>
+        </a>
     {{/each}}
 </div>
 
