@@ -260,3 +260,18 @@ input[type=text]:focus:not(.browser-default):focus:not([readonly]) + label, #bur
     background:none;
     border:none;
 }
+
+/* EDIT PAGE */
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after{
+    background-color: rgb(236,102,70);
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after{
+    border: 2px solid rgb(236,102,70);
+}
+
+#burger-name input[type=text]{
+    font-size: 4.2rem;
+    color: inherit;
+}

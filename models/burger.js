@@ -29,6 +29,12 @@ burger = {
         })
     },
 
+    updateTwo: function(col1,val1,col2,val2,id,fn){
+        orm.updateTwo('burgers',col1,val1,col2,val2,id,function(res){
+            fn(res)
+        })
+    },
+
     delete: function(id,fn){
         orm.deleteOne('burgers',id,function(res){
             fn(res)

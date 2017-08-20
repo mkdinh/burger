@@ -28,6 +28,13 @@ var orm = {
             fn(data)
         })
     },
+    
+    updateTwo: function(table,col1,val1,col2,val2,id,fn){
+        connection.query('UPDATE ?? SET ??=?, ??=? WHERE id=?', [table,col1,val1,col2,val2,id], function(err,data){
+            if(err) throw err;
+            fn(data)
+        })
+    },
 
     deleteOne: function(table,id,fn){
         connection.query('DELETE FROM ?? WHERE id=?',[table,id],function(err,data){

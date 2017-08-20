@@ -1,0 +1,40 @@
+
+  <div class="col s12 m8 offset-m2 valign-wrapper" id='burger-info'>
+    <div class="card horizontal">
+      <div class="card-image valign-wrapper">
+        <img src='{{avatar}}' id='burger-pic'>
+      </div>
+      <div class="card-stacked">
+        <form action='/edit/{{id}}?_method=PUT' method='POST'>
+          <div class="card-content">
+              <h1 id='burger-name'> <input type='text' name='burger_name' value='{{burger_name}}'> </h1>
+                  <ul>
+                      <li class='burger-stat'> <p><span class='stat-label'>ID: </span>{{id}} </p></li>
+                      
+                      <li class='burger-stat'> 
+                          {{#if devoured}}
+                            <span class='stat-label'>Status:</span> 
+                            <input name="devoured" checked='checked' type="radio" value=1 id="burger-devoured" />
+                            <label for="burger-devoured">Eaten</label>
+                             <input name="devoured" type="radio" value=0 id="burger-notDevoured" />
+                            <label for="burger-notDevoured">Not Eaten</label>
+                          {{else}}
+                            <span class='stat-label'>Status:</span> 
+                            <input name="devoured" type="radio" value=1 id="burger-devoured" />
+                            <label for="burger-devoured">Eaten</label>
+                             <input name="devoured"  checked='checked' type="radio" value=0 id="burger-notDevoured" />
+                            <label for="burger-notDevoured">Not Eaten</label>
+                          {{/if}}
+                      </li>
+
+                      <li class='burger-stat'> <p><span class='stat-label'>Last Updated: </span>{{date}}</p> </li>
+                  </ul>
+          </div>
+          <div class="card-action center">
+            <a href="/show/{{id}}">Cancel <i class='tiny material-icons'>cancel</i></a>
+              <button type='submit' class='burger-delete-btn'>Submit <i class='tiny material-icons'>check_circle</i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

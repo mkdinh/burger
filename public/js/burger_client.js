@@ -53,4 +53,5 @@
 
 // BURGER SHOW
 
-// $('#burger-info').fadeIn(600);
+// BURGER EDIT
+
