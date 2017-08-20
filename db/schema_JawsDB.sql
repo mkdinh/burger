@@ -1,6 +1,6 @@
 USE k9lh5pvos28ctily;
 
-DROP TABLE IF EXISTS burgers_db;
+DROP TABLE IF EXISTS burgers;
 
 CREATE TABLE burgers (
 	id INT AUTO_INCREMENT,
@@ -10,9 +10,3 @@ CREATE TABLE burgers (
     date datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(id)
 );
-
-select * FROM burgers;
-
-alter table burgers modify column;
-
-DELETE FROM burgers WHERE I
