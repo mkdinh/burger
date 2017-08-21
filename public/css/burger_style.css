@@ -259,6 +259,15 @@ input[type=text]:focus:not(.browser-default):focus:not([readonly]) + label, #bur
     background-color: none;
     background:none;
     border:none;
+    transition: color .3s ease;
+}
+
+.burger-delete-btn:focus{
+    background-color: white;
+}
+
+.burger-delete-btn:hover{
+    color: #ffd8a6;
 }
 
 /* EDIT PAGE */
@@ -275,3 +284,4 @@ input[type=text]:focus:not(.browser-default):focus:not([readonly]) + label, #bur
     font-size: 4.2rem;
     color: inherit;
 }
+
